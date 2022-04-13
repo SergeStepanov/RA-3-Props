@@ -1,13 +1,26 @@
 import React from 'react';
-import shortid from 'shortid'
+import Star from './Star';
+import shortid from 'shortid';
 
 function Stars({ count }) {
-  const countId = count.map((item) => ({
-    id: shortid.generate(),
-    count: item,
-  }))
+  let starsId = [];
 
-  return <ul></ul>;
+  for (let i = 0; i < count; i++) {
+    starsId.push({ id: shortid.generate() });
+  }
+
+  const stars = starsId.map((star) => <Star key={star.id} />);
+
+  return (
+    count >= 1 &&
+    count <= 5 &&
+    typeof count === 'number' && 
+    <ul className='card-body-stars'>{stars}</ul>
+  );
 }
+
+Stars.defaultProps = {
+  count: 0,
+};
 
 export default Stars;
