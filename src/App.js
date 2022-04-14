@@ -1,10 +1,10 @@
 import './App.css';
 import Stars from './RatingOfFilms/Stars';
 import Listing from './ListOfOffers/Listing';
-import data from './Data.json';
+
+const data = require('./Data.json')
 
 function App() {
-  // const items = JSON.parse(data);
   return (
     <>
       <h2>Рейтинг фильмов</h2>
@@ -13,9 +13,10 @@ function App() {
       <Stars count='ghj' />
 
       <hr />
+
       <h2>Список предложений</h2>
-      <Listing />
-      {/* {console.log(items)} */}
+      <Listing items={data} />
+      {console.log(data)}
     </>
   );
 }
